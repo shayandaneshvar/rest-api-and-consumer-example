@@ -13,14 +13,12 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class User implements Serializable {
     private Long id;
-    @NonNull
     private Name name;
     private String password;
-    @NonNull
     private Gender gender;
-    @Email
     private String Email;
     private Job job;
+    private ir.shayandaneshvar.apiconsumer.domain.Data data;
 
     public User(Name name, String password, Gender gender, String Email, Job job) {
         this.name = name;

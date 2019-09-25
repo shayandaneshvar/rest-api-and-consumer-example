@@ -1,5 +1,6 @@
 package ir.shayandaneshvar.apiconsumer.services;
 
+import ir.shayandaneshvar.apiconsumer.domain.Data;
 import ir.shayandaneshvar.apiconsumer.domain.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,14 @@ public class ApiServiceImpl implements ApiService {
 
     private RestTemplate restTemplate;
 
-    // TODO: 9/24/19  
+    public User getUser(Integer number) {
+        User user = restTemplate.getForObject("http://localhost:8081/users/" + number, User.class);
+        return user;
+    }
+
     @Override
-    public List<User> getUsers(Integer count) {
-        return null;
+    public List<User> getUsers() {
+        Data data = restTemplate.getForObject("http://localhost:8081/datas", Data.class);
+        return data.getUserData();
     }
 }

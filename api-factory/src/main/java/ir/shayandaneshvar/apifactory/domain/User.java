@@ -13,6 +13,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "user")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +29,8 @@ public class User implements Serializable {
     private String Email;
     @ManyToOne
     private Job job;
+    @ManyToOne
+    private ir.shayandaneshvar.apifactory.domain.Data data;
 
     public User(Name name, String password, Gender gender, String Email, Job job) {
         this.name = name;
